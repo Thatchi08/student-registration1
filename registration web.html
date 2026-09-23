@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+
+    <style>
+        body {
+            background-color: lightblue;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            width: 400px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 25px;
+            border: 2px solid navy;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: navy;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: navy;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: green;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <h1>Student Registration Form</h1>
+
+        <form onsubmit="return validateForm()">
+
+            <label>Student Name:</label>
+            <input type="text" id="name">
+
+            <label>Register Number:</label>
+            <input type="text" id="regno">
+
+            <label>Email:</label>
+            <input type="text" id="email">
+
+            <label>Mobile Number:</label>
+            <input type="text" id="mobile">
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script>
+        function validateForm() {
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let mobile = document.getElementById("mobile").value;
+
+            if (name.trim() === "") {
+                alert("Student Name should not be empty.");
+                return false;
+            }
+
+            if (!email.includes("@")) {
+                alert("Email should contain @.");
+                return false;
+            }
+
+            if (!/^\d{10}$/.test(mobile)) {
+                alert("Mobile Number should contain exactly 10 digits.");
+                return false;
+            }
+
+            document.getElementById("message").innerHTML =
+                "Registration Successful!";
+
+            document.getElementById("message").style.color = "green";
+
+            return false;
+        }
+    </script>
+
+</body>
+</html>
